@@ -11,13 +11,16 @@ export default [
   { fn: error('message').code, expect: 'E_UNKNOWN', info: 'default name is E_UNKNOWN' },
 
   { fn: error(new Error('message')).name, expect: 'Error', info: 'error default name is Error' },
-  { fn: error(new Error('message')).code, expect: 'Error', info: 'error default name is Error' },
+  {
+    fn: error(new Error('message')).code,
+    expect: 'E_UNKNOWN',
+    info: 'error default code is E_UNKNOWN',
+  },
   {
     fn: error(new Error('message')).message,
     expect: 'message',
     info: 'error.message is set if error is passed',
   },
-
   {
     fn: tryCatch(fs.mkdirp, ''),
     expect: t => t.name === 'E_ARG_EMPTY',
