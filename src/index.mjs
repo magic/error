@@ -9,6 +9,14 @@ export const error = (err, name = 'E_UNKNOWN') => {
     err.code = name
   }
 
+  if (!err.name.startsWith('E')) {
+    err.code = `E_${err.name}`.toUpperCase()
+  }
+
+  if (err.name === 'Error') {
+    err.code = 'E_UNKNOWN'
+  }
+
   // clean stack
   // remove name, message, and !first and second! line of stack (if they include this file)
   err.stack = err.stack
