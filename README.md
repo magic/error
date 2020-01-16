@@ -34,13 +34,17 @@ npm install @magic/error
 import error from '@magic/error'
 
 err = error('message', 'name')
-// { message: 'message', name: 'name' }
+// { message: 'message', name: 'E_NAME', code: 'E_NAME' }
 
 err = error('message')
-// { message: 'message', name: 'E_UNKNOWN' }
+// { message: 'message', name: 'E_UNKNOWN', code: 'E_UNKNOWN' }
+
+err = error(new Error('message'))
+// { message: 'message', name: 'Error', code: 'E_UNKNOWN' }
 
 throw err
-// the stacktrace will be as expected, not including the file this error was instantiated in.
+// the stacktrace will be as expected,
+// not including the file in this lib that this error was instantiated in.
 ```
 
 ##### changelog
@@ -48,5 +52,10 @@ throw err
 ##### 0.0.1
 first commit
 
-#### 0.0.2 - unreleased
+#### 0.0.2
+* errors can be passed as first argument
+* error.name is unchanged, error.code gets transformed to start with E_ and be uppercased.
+* error.code for passed in errors is E_UNKNOWN.
+
+#### 0.0.3 - unreleased
 ...
