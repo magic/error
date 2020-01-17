@@ -1,29 +1,37 @@
-export const error = (err, name = 'E_UNKNOWN') => {
+export const error = (err, name = 'Unknown', type = 'E') => {
   if (err instanceof Error) {
     name = err.code || err.name
-    err.code = name
-    err.name = name
   } else {
     err = new Error(err)
-    err.name = name
-    err.code = name
+
+    err.stack = err.stack
+      .split('\n')
+      .filter(c => !c.includes('/error/src/index.mjs'))
+      .join('\n')
   }
 
-  if (!err.name.startsWith('E')) {
-    err.code = `E_${err.name}`.toUpperCase()
+  err.code = name
+  err.name = name
+  err.type = type
+
+  if (!err.code.startsWith(type)) {
+    err.code = `${type}_${err.code}`.toUpperCase().replace(/ /g, '_')
   }
 
   if (err.name === 'Error') {
     err.code = 'E_UNKNOWN'
   }
 
+  const nameRegExp = new RegExp(`${err.name}:?`, 'g')
+  const codeRegExp = new RegExp(`${err.code}:?`, 'g')
+
   // clean stack
-  // remove name, message, and !first and second! line of stack (if they include this file)
+  // remove name and message
   err.stack = err.stack
-    .replace(`${err.name}:`, '')
-    .replace(`${err.code}:`, '')
+    .replace(nameRegExp, '')
+    .replace(codeRegExp, '')
     .split('\n')
-    .filter((c, i) => (i <= 1 ? c.includes('/error/src/index.mjs') : false))
+    .map(t => t.trim())
     .join('\n')
 
   return err
