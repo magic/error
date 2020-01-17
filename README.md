@@ -34,10 +34,10 @@ npm install @magic/error
 import error from '@magic/error'
 
 err = error('message', 'name')
-// Error { message: 'message', name: 'E_NAME', code: 'E_NAME', type: 'E' }
+// Error { message: 'message', name: 'name', code: 'E_NAME', type: 'E' }
 
 err = error('message')
-// Error { message: 'message', name: 'E_UNKNOWN', code: 'E_UNKNOWN', type: 'E' }
+// Error { message: 'message', name: 'Unknown', code: 'E_UNKNOWN', type: 'E' }
 
 err = error(new Error('message'))
 // Error { message: 'message', name: 'Error', code: 'E_UNKNOWN', type: 'E' }
