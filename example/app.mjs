@@ -7,6 +7,7 @@ export const state = {
     { to: '/#install', text: 'install' },
     { to: '/#import', text: 'import' },
     { to: '/#usage', text: 'usage' },
+    { to: '/#error-types', text: 'error types' },
     { to: '/#source', text: 'source' },
   ],
 }

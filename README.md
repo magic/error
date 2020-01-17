@@ -24,30 +24,48 @@ throw errors with custom code/name.
 [snyk-image]: https://snyk.io/test/github/magic/error/badge.svg
 [snyk-url]: https://snyk.io/test/github/magic/error
 
-#### installation:
+### installation:
 ```javascript
 npm install @magic/error
 ```
 
-##### usage:
+### usage:
 ```javascript
 import error from '@magic/error'
 
 err = error('message', 'name')
-// Error { message: 'message', name: 'E_NAME', code: 'E_NAME' }
+// Error { message: 'message', name: 'E_NAME', code: 'E_NAME', type: 'E' }
 
 err = error('message')
-// Error { message: 'message', name: 'E_UNKNOWN', code: 'E_UNKNOWN' }
+// Error { message: 'message', name: 'E_UNKNOWN', code: 'E_UNKNOWN', type: 'E' }
 
 err = error(new Error('message'))
-// Error { message: 'message', name: 'Error', code: 'E_UNKNOWN' }
+// Error { message: 'message', name: 'Error', code: 'E_UNKNOWN', type: 'E' }
 
 err = error('message', 'name with spaces')
-// Error { message: 'message', name: 'name with spaces', code: 'E_NAME_WITH_SPACES' }
+// Error {
+//  message: 'message',
+//  name: 'name with spaces',
+//  code: 'E_NAME_WITH_SPACES',
+//  type: 'E'
+// }
+```
 
-throw err
-// the stacktrace will be as expected,
-// not including the file in this lib that this error was instantiated in.
+#### error types
+errors can have types
+
+```javascript
+// E is the default type
+err = error('message', 'name')
+// Error { message: 'message', name: 'name', code: 'E_NAME', type: 'E' }
+
+// warnings:
+err = error('message', 'name', 'W')
+// Error { message: 'message', name: 'name', code: 'W_NAME', type: 'W' }
+
+// debug:
+err = error('message', 'name', 'D')
+// Error { message: 'message', name: 'name', code: 'D_NAME', type: 'D' }
 ```
 
 ##### changelog
@@ -61,8 +79,10 @@ first commit
 * error.code for passed in errors is E_UNKNOWN.
 
 #### 0.0.3
+* error type (third fn argument) can now be set, default is E to keep output the same.
 * error name (second fn argument) can now be a string with spaces.
-e.code is e.name, but UPPER_SNAKE_CASED.
+  e.code is e.type + e.name, but UPPER_SNAKE_CASED.
+* error stack cleanup improved.
 
 #### 0.0.4 - unreleased
 ...
