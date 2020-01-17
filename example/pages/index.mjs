@@ -18,13 +18,21 @@ export const View = state => [
 import error from '@magic/error'
 
 err = error('message', 'name')
-// { message: 'message', name: 'name' }
+// Error { message: 'message', name: 'E_NAME', code: 'E_NAME' }
 
 err = error('message')
-// { message: 'message', name: 'E_UNKNOWN' }
+// Error { message: 'message', name: 'E_UNKNOWN', code: 'E_UNKNOWN' }
+
+err = error(new Error('message'))
+// Error { message: 'message', name: 'Error', code: 'E_UNKNOWN' }
+
+err = error('message', 'name with spaces')
+// Error { message: 'message', name: 'name with spaces', code: 'E_NAME_WITH_SPACES' }
 
 throw err
-// the stacktrace will be as expected, not including the file this error was instantiated in.
+// the stacktrace will be as expected,
+// not including the file in this lib that this error was instantiated in.
+
 `),
 
   h2({ id: 'source' }, 'source'),

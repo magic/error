@@ -34,13 +34,16 @@ npm install @magic/error
 import error from '@magic/error'
 
 err = error('message', 'name')
-// { message: 'message', name: 'E_NAME', code: 'E_NAME' }
+// Error { message: 'message', name: 'E_NAME', code: 'E_NAME' }
 
 err = error('message')
-// { message: 'message', name: 'E_UNKNOWN', code: 'E_UNKNOWN' }
+// Error { message: 'message', name: 'E_UNKNOWN', code: 'E_UNKNOWN' }
 
 err = error(new Error('message'))
-// { message: 'message', name: 'Error', code: 'E_UNKNOWN' }
+// Error { message: 'message', name: 'Error', code: 'E_UNKNOWN' }
+
+err = error('message', 'name with spaces')
+// Error { message: 'message', name: 'name with spaces', code: 'E_NAME_WITH_SPACES' }
 
 throw err
 // the stacktrace will be as expected,
@@ -57,5 +60,9 @@ first commit
 * error.name is unchanged, error.code gets transformed to start with E_ and be uppercased.
 * error.code for passed in errors is E_UNKNOWN.
 
-#### 0.0.3 - unreleased
+#### 0.0.3
+* error name (second fn argument) can now be a string with spaces.
+e.code is e.name, but UPPER_SNAKE_CASED.
+
+#### 0.0.4 - unreleased
 ...
