@@ -15,6 +15,11 @@ namedErrStackedNative.stack = namedErrStackedNative.stack.replace(/:/g, '')
 
 const namedErrorStacked = error(namedErrStackedNative)
 
+const noNameErrorNative = new Error('msg')
+noNameErrorNative.name = 23
+
+const noNameError = error(noNameErrorNative)
+
 export default [
   { fn: error('message', 'E_CUSTOM').name, expect: 'E_CUSTOM', info: 'error.name can be set' },
   { fn: error('message').message, expect: 'message', info: 'error.message can be set' },
@@ -59,7 +64,11 @@ export default [
     info: 'type = D: gets prepended to err.code',
   },
 
-  { fn: error(new Error('message')).name, expect: 'Error', info: 'error default name is Error' },
+  {
+    fn: error(new Error('message')).name,
+    expect: 'Error',
+    info: 'default name (2nd fn arg) is Error',
+  },
   {
     fn: error(new Error('message')).code,
     expect: 'E_UNKNOWN',
@@ -105,7 +114,31 @@ export default [
   },
   {
     fn: namedErrorStacked.stack,
-    expect: t => console.log({ t }) || !t.includes('E_ERROR_NAME'),
-    info: 'err.stack: err.name gets removed, without trailing :',
+    expect: t => !t.includes('E_ERROR_NAME'),
+    info: 'err.stack: err.code gets removed, without trailing :',
+  },
+
+  {
+    fn: noNameError.name,
+    expect: 'Unknown',
+    info: 'err.name gets set to Unknown if passed Error.name is not a string',
+  },
+
+  {
+    fn: noNameError.code,
+    expect: 'E_UNKNOWN',
+    info: 'err.code gets set to E_UNKNOWN if passed Error.name is not a string',
+  },
+
+  {
+    fn: error('msg', 23).name,
+    expect: 'Unknown',
+    info: 'err.name: gets set to Unknown if name (2nd fn arg) is not a string',
+  },
+
+  {
+    fn: error('msg', 23).code,
+    expect: 'E_UNKNOWN',
+    info: 'err.code: gets set to E_UNKNOWN if name (2nd fn arg) is not a string',
   },
 ]
