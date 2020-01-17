@@ -1,6 +1,8 @@
 export const error = (err, name = 'Unknown', type = 'E') => {
   if (err instanceof Error) {
-    name = err.code || err.name
+    if (name === 'Unknown' && typeof err.name === 'string') {
+      name = err.name
+    }
   } else {
     err = new Error(err)
 
@@ -8,6 +10,10 @@ export const error = (err, name = 'Unknown', type = 'E') => {
       .split('\n')
       .filter(c => !c.includes('/error/src/index.mjs'))
       .join('\n')
+  }
+
+  if (typeof name !== 'string') {
+    name = 'Unknown'
   }
 
   err.code = name
