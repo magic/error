@@ -29,13 +29,14 @@ export const error = (err, name = 'Unknown', type = 'E') => {
   }
 
   const nameRegExp = new RegExp(`${err.name}:?`, 'g')
-  const codeRegExp = new RegExp(`${err.code}:?`, 'g')
+  const msgRegExp = new RegExp(`${err.message}:?`, 'g')
 
   // clean stack
   // remove name and message
   err.stack = err.stack
     .replace(nameRegExp, '')
-    .replace(codeRegExp, '')
+    .replace(msgRegExp, '')
+    .replace('Error:', '')
     .split('\n')
     .map(t => t.trim())
     .join('\n')
