@@ -24,6 +24,7 @@ export const error = (err, name = 'Unknown', type = 'E') => {
   err.code = name
   err.name = name
   err.type = type
+  err.msg = err.message
 
   if (!err.code.startsWith(type)) {
     err.code = `${type}_${err.code}`.toUpperCase().replace(/ /g, '_')
