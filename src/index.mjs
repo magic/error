@@ -1,5 +1,10 @@
 export const error = (err, name = 'Unknown', type = 'E') => {
-  if (err instanceof Error) {
+  if (Array.isArray(err)) {
+    name = err[1] || name
+    type = err[2] || type
+
+    err = new Error(err[0])
+  } else if (err instanceof Error) {
     if (name === 'Unknown' && typeof err.name === 'string') {
       name = err.name
     }
