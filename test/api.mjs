@@ -141,4 +141,39 @@ export default [
     expect: 'E_UNKNOWN',
     info: 'err.code: gets set to E_UNKNOWN if name (2nd fn arg) is not a string',
   },
+
+  {
+    fn: error(['testing', 'name', 'T']).message,
+    expect: 'testing',
+    info: 'error can be an array and message will still be set',
+  },
+  {
+    fn: error(['testing', 'name', 'T']).code,
+    expect: 'T_NAME',
+    info: 'error can be an array and code will still be set',
+  },
+
+  {
+    fn: error(['testing', 'name']).code,
+    expect: 'E_NAME',
+    info: 'error can be an array without type and type will be E',
+  },
+
+  {
+    fn: error(['testing']).code,
+    expect: 'E_UNKNOWN',
+    info: 'error can be an array without name and code will be E_UNKNOWN',
+  },
+
+  {
+    fn: error(['testing'], 'name').code,
+    expect: 'E_NAME',
+    info: 'error can be an array without name and name can be passed, code will be E_NAME',
+  },
+
+  {
+    fn: error(['testing'], 'name', 'T').code,
+    expect: 'T_NAME',
+    info: 'error can be an array without name and name and type can be passed, code will be T_NAME',
+  },
 ]
