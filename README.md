@@ -34,21 +34,31 @@ npm install @magic/error
 import error from '@magic/error'
 
 err = error('message', 'name')
-// Error { message: 'message', name: 'name', code: 'E_NAME', type: 'E' }
+// Error { message: 'message', name: 'name', code: 'E_NAME', type: 'E', msg: 'message' }
 
 err = error('message')
-// Error { message: 'message', name: 'Unknown', code: 'E_UNKNOWN', type: 'E' }
+// Error { message: 'message', name: 'Unknown', code: 'E_UNKNOWN', type: 'E', msg: 'message' }
 
 err = error(new Error('message'))
-// Error { message: 'message', name: 'Error', code: 'E_UNKNOWN', type: 'E' }
+// Error { message: 'message', name: 'Error', code: 'E_UNKNOWN', type: 'E', msg: 'message' }
 
 err = error('message', 'name with spaces')
 // Error {
 //  message: 'message',
 //  name: 'name with spaces',
 //  code: 'E_NAME_WITH_SPACES',
-//  type: 'E'
+//  type: 'E',
+//  msg: 'message',
 // }
+
+err = error(['message', 'name', 'T'])
+// Error { message: 'message', name: 'name', code: 'T_NAME', type: T, msg: 'message' }
+
+err = error(['message'], 'name', 'T')
+// Error { message: 'message', name: 'name', code: 'T_NAME', type: T, msg: 'message' }
+
+err = error(['message', 'name1'], 'name2', 'T')
+// Error { message: 'message', name: 'name1', code: 'T_NAME1', type: T, msg: 'message' }
 ```
 
 #### error types
@@ -57,15 +67,15 @@ errors can have types
 ```javascript
 // E is the default type
 err = error('message', 'name')
-// Error { message: 'message', name: 'name', code: 'E_NAME', type: 'E' }
+// Error { message: 'message', name: 'name', code: 'E_NAME', type: 'E', msg: 'message' }
 
 // warnings:
 err = error('message', 'name', 'W')
-// Error { message: 'message', name: 'name', code: 'W_NAME', type: 'W' }
+// Error { message: 'message', name: 'name', code: 'W_NAME', type: 'W', msg: 'message' }
 
 // debug:
 err = error('message', 'name', 'D')
-// Error { message: 'message', name: 'name', code: 'D_NAME', type: 'D' }
+// Error { message: 'message', name: 'name', code: 'D_NAME', type: 'D', msg: 'message' }
 ```
 
 ##### changelog
@@ -84,5 +94,9 @@ first commit
   e.code is e.type + e.name, but UPPER_SNAKE_CASED.
 * error stack cleanup improved.
 
-#### 0.0.4 - unreleased
+#### 0.0.4
+* err.msg is no === err.message
+* first argument can be an array of [message, name, type]
+
+#### 0.0.5 - unreleased
 ...

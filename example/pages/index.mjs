@@ -18,13 +18,13 @@ export const View = state => [
 import error from '@magic/error'
 
 err = error('message', 'name')
-// Error { message: 'message', name: 'name', code: 'E_NAME', type: 'E' }
+// Error { message: 'message', name: 'name', code: 'E_NAME', type: 'E', msg: 'message' }
 
 err = error('message')
-// Error { message: 'message', name: 'Unknown', code: 'E_UNKNOWN', type: 'E' }
+// Error { message: 'message', name: 'Unknown', code: 'E_UNKNOWN', type: 'E', msg: 'message' }
 
 err = error(new Error('message'))
-// Error { message: 'message', name: 'Error', code: 'E_UNKNOWN', type: 'E' }
+// Error { message: 'message', name: 'Error', code: 'E_UNKNOWN', type: 'E', msg: 'message' }
 
 err = error('message', 'name with spaces')
 // Error {
@@ -33,6 +33,16 @@ err = error('message', 'name with spaces')
 //  code: 'E_NAME_WITH_SPACES',
 //  type: 'E'
 // }
+
+err = error(['message', 'name', 'T'])
+// Error { message: 'message', name: 'name', code: 'T_NAME', type: T, msg: 'message' }
+
+err = error(['message'], 'name', 'T')
+// Error { message: 'message', name: 'name', code: 'T_NAME', type: T, msg: 'message' }
+
+err = error(['message', 'name1'], 'name2', 'T')
+// Error { message: 'message', name: 'name1', code: 'T_NAME1', type: T, msg: 'message' }
+
 `),
 
   h2({ id: 'error-types' }, 'error types'),
@@ -41,15 +51,15 @@ err = error('message', 'name with spaces')
   Pre(`
 // E is the default type
 err = error('message', 'name')
-// Error { message: 'message', name: 'name', code: 'E_NAME', type: 'E' }
+// Error { message: 'message', name: 'name', code: 'E_NAME', type: 'E', msg: 'message' }
 
 // warnings:
 err = error('message', 'name', 'W')
-// Error { message: 'message', name: 'name', code: 'W_NAME', type: 'W' }
+// Error { message: 'message', name: 'name', code: 'W_NAME', type: 'W', msg: 'message' }
 
 // debug:
 err = error('message', 'name', 'D')
-// Error { message: 'message', name: 'name', code: 'D_NAME', type: 'D' }
+// Error { message: 'message', name: 'name', code: 'D_NAME', type: 'D', msg: 'message' }
 `),
 
   h2({ id: 'source' }, 'source'),
