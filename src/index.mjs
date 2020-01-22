@@ -34,8 +34,8 @@ export const error = (err, name = 'Unknown', type = 'E') => {
     err.code = 'E_UNKNOWN'
   }
 
-  const nameRegExp = new RegExp(`${err.name}:?`, 'g')
-  const msgRegExp = new RegExp(`${err.message}:?`, 'g')
+  const nameRegExp = new RegExp(`${err.name}:? `, 'g')
+  const msgRegExp = new RegExp(`${err.message}:? `, 'g')
 
   // clean stack
   // remove name and message
