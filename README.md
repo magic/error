@@ -98,5 +98,8 @@ first commit
 * err.msg is no === err.message
 * first argument can be an array of [message, name, type]
 
-#### 0.0.5 - unreleased
+#### 0.0.5
+* fix replacement of : in error name and error message to only replace the ones we want to replace
+
+#### 0.0.6 - unreleased
 ...
