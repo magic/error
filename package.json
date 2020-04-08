@@ -31,6 +31,9 @@
   "bugs": {
     "url": "https://github.com/magic/error/issues"
   },
+  "dependencies": {
+    "@magic/types": "0.1.11"
+  },
   "devDependencies": {
     "@magic-modules/gdpr": "0.0.15",
     "@magic-modules/git-badges": "0.0.9",
@@ -40,9 +43,6 @@
     "@magic/core": "0.0.66",
     "@magic/format": "0.0.8",
     "@magic/test": "0.1.41"
-  },
-  "dependencies": {
-    "@magic/types": "0.1.11"
   },
   "files": [
     "src"
