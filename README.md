@@ -8,7 +8,6 @@ throw errors with custom code/name.
 [![Linux Build Status][travis-image]][travis-url]
 [![Windows Build Status][appveyor-image]][appveyor-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
-[![Greenkeeper badge][greenkeeper-image]][greenkeeper-url]
 [![Known Vulnerabilities][snyk-image]][snyk-url]
 
 [npm-image]: https://img.shields.io/npm/v/@magic/error.svg
@@ -19,8 +18,6 @@ throw errors with custom code/name.
 [appveyor-url]: https://ci.appveyor.com/project/magic/error/branch/master
 [coveralls-image]: https://coveralls.io/repos/github/magic/error/badge.svg
 [coveralls-url]: https://coveralls.io/github/magic/error
-[greenkeeper-image]: https://badges.greenkeeper.io/magic/error.svg
-[greenkeeper-url]: https://badges.greenkeeper.io/magic/error.svg
 [snyk-image]: https://snyk.io/test/github/magic/error/badge.svg
 [snyk-url]: https://snyk.io/test/github/magic/error
 
