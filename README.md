@@ -111,5 +111,8 @@ update depdendencies
 ##### 0.0.9
 update dependencies
 
-##### 0.0.10 - unreleased
+##### 0.0.10
+update @magic/types to avoid circular dependency
+
+##### 0.0.11 - unreleased
 ...
