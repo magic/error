@@ -1,11 +1,13 @@
+import is from '@magic/types'
+
 export const error = (err, name = 'Unknown', type = 'E') => {
-  if (Array.isArray(err)) {
+  if (is.array(err)) {
     name = err[1] || name
     type = err[2] || type
 
     err = new Error(err[0])
   } else if (err instanceof Error) {
-    if (name === 'Unknown' && typeof err.name === 'string') {
+    if (name === 'Unknown' && is.string(err.name)) {
       name = err.name
     }
   } else {
@@ -17,7 +19,7 @@ export const error = (err, name = 'Unknown', type = 'E') => {
       .join('\n')
   }
 
-  if (typeof name !== 'string') {
+  if (!is.string(name)) {
     name = 'Unknown'
   }
 
