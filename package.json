@@ -32,7 +32,7 @@
     "url": "https://github.com/magic/error/issues"
   },
   "dependencies": {
-    "@magic/types": "0.1.17"
+    "@magic/types": "0.1.18"
   },
   "devDependencies": {
     "@magic-modules/git-badges": "0.0.11",
@@ -41,7 +41,7 @@
     "@magic-modules/pre": "0.0.11",
     "@magic-themes/docs": "0.0.14",
     "@magic/core": "0.0.133",
-    "@magic/format": "0.0.34",
+    "@magic/format": "0.0.35",
     "@magic/test": "0.2.0"
   },
   "files": [
