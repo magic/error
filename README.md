@@ -121,5 +121,8 @@ update @magic/types to avoid circular dependency
 ##### 0.0.12
 update dependencies
 
-##### 0.0.13 - unreleased
+##### 0.0.13
+update dependencies
+
+##### 0.0.14 - unreleased
 ...
