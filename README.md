@@ -22,11 +22,13 @@ throw errors with custom code/name.
 [snyk-url]: https://snyk.io/test/github/magic/error
 
 ### installation:
+
 ```javascript
 npm install @magic/error
 ```
 
 ### usage:
+
 ```javascript
 import error from '@magic/error'
 
@@ -59,6 +61,7 @@ err = error(['message', 'name1'], 'name2', 'T')
 ```
 
 #### error types
+
 errors can have types
 
 ```javascript
@@ -78,60 +81,81 @@ err = error('message', 'name', 'D')
 ##### changelog
 
 ##### 0.0.1
+
 first commit
 
 #### 0.0.2
-* errors can be passed as first argument
-* error.name is unchanged, error.code gets transformed to start with E_ and be uppercased.
-* error.code for passed in errors is E_UNKNOWN.
+
+- errors can be passed as first argument
+- error.name is unchanged, error.code gets transformed to start with E\_ and be uppercased.
+- error.code for passed in errors is E_UNKNOWN.
 
 #### 0.0.3
-* error type (third fn argument) can now be set, default is E to keep output the same.
-* error name (second fn argument) can now be a string with spaces.
+
+- error type (third fn argument) can now be set, default is E to keep output the same.
+- error name (second fn argument) can now be a string with spaces.
   e.code is e.type + e.name, but UPPER_SNAKE_CASED.
-* error stack cleanup improved.
+- error stack cleanup improved.
 
 #### 0.0.4
-* err.msg is no === err.message
-* first argument can be an array of [message, name, type]
+
+- err.msg is no === err.message
+- first argument can be an array of [message, name, type]
 
 #### 0.0.5
-* fix replacement of : in error name and error message to only replace the ones we want to replace
+
+- fix replacement of : in error name and error message to only replace the ones we want to replace
 
 #### 0.0.6
+
 bump required node version to 14.2.0
 
-#### 0.0.7 
+#### 0.0.7
+
 update depdendencies
 
 #### 0.0.8
-* bump required node version to 14.15.4
-* update dependencies
+
+- bump required node version to 14.15.4
+- update dependencies
 
 ##### 0.0.9
+
 update dependencies
 
 ##### 0.0.10
+
 update @magic/types to avoid circular dependency
 
 ##### 0.0.11
-* use @magic/types internally
-* update dependencies
+
+- use @magic/types internally
+- update dependencies
 
 ##### 0.0.12
+
 update dependencies
 
 ##### 0.0.13
+
 update dependencies
 
 ##### 0.0.14
+
 update dependencies
 
 ##### 0.0.15
+
 update dependencies
 
 ##### 0.0.16
+
 update dependencies
 
-##### 0.0.17 - unreleased
+##### 0.0.17
+
+update dependencies
+
+##### 0.0.18 - unreleased
+
 ...
