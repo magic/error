@@ -1,6 +1,6 @@
-import { is, fs, tryCatch } from '@magic/test'
+import { fs, tryCatch } from '@magic/test'
 
-import error from '../src/index.mjs'
+import error from '../src/index.js'
 
 const testError = new Error('message')
 
