@@ -30,6 +30,11 @@ export default [
     expect: 'error space',
     info: 'type of E gets prepended to err.code',
   },
+  {
+    fn: error('some msg', 'Error').code,
+    expect: 'E_UNKNOWN',
+    info: 'If name is Error, code is forced to E_UNKNOWN',
+  },
 
   {
     fn: error('message', 'error', 'E').name,
