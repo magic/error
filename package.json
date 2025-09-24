@@ -6,7 +6,7 @@
   "license": "AGPL-3.0",
   "homepage": "https://magic.github.io/error",
   "main": "src/index.js",
-  "types": "src/index.d.ts",
+  "types": "types/index.d.ts",
   "module": "src/index.js",
   "type": "module",
   "scripts": {
