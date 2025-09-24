@@ -161,6 +161,10 @@ update dependencies
 - add typescript types
 - update dependencies
 
-##### 0.0.19 - unreleased
+##### 0.0.19
+
+- export types from types dir...
+
+##### 0.0.20 - unreleased
 
 ...
