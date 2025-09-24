@@ -14,7 +14,9 @@
     "format": "f -w --exclude docs",
     "format:check": "f",
     "calls": "calls",
-    "build": "NODE_ENV=production magic build",
+    "build": "tsc && npm run format",
+    "build:docs": "NODE_ENV=production magic build",
+    "prepublishOnly": "npm run build",
     "prod": "NODE_ENV=production magic build serve",
     "clean": "magic clean",
     "serve": "magic serve",
@@ -32,7 +34,7 @@
     "url": "https://github.com/magic/error/issues"
   },
   "dependencies": {
-    "@magic/types": "0.1.25"
+    "@magic/types": "0.1.26"
   },
   "devDependencies": {
     "@magic-modules/git-badges": "0.0.12",
