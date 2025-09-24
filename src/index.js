@@ -53,7 +53,7 @@ export const error = (err, name = 'Unknown', type = 'E') => {
   if (e.stack) {
     e.stack = e.stack
       .split('\n')
-      .filter(c => !c.includes('/error/src/index.mjs'))
+      .filter(c => !c.includes('/error/src/index.js'))
       .join('\n')
       .replace(nameRegExp, '')
       .replace(msgRegExp, '')
