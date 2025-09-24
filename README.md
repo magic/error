@@ -156,6 +156,11 @@ update dependencies
 
 update dependencies
 
-##### 0.0.18 - unreleased
+##### 0.0.18
+
+- add typescript types
+- update dependencies
+
+##### 0.0.19 - unreleased
 
 ...
