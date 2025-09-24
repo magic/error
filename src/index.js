@@ -1,55 +1,69 @@
 import is from '@magic/types'
 
+/**
+ * @typedef {Error & { code?: string, type: string, msg: string }} CustomError
+ */
+
+/**
+ * @param {string | Error | [string, string?, string?]} err
+ * @param {string} [name='Unknown']
+ * @param {string} [type='E']
+ * @returns {CustomError}
+ */
 export const error = (err, name = 'Unknown', type = 'E') => {
+  /** @type {CustomError} */
+  let e
+
   if (is.array(err)) {
     name = err[1] || name
     type = err[2] || type
 
-    err = new Error(err[0])
+    e = /** @type {CustomError} */ (new Error(err[0]))
   } else if (err instanceof Error) {
-    if (name === 'Unknown' && is.string(err.name)) {
-      name = err.name
+    e = /** @type {CustomError} */ (err)
+
+    if (name === 'Unknown' && is.string(e.name)) {
+      name = e.name
     }
   } else {
-    err = new Error(err)
-
-    err.stack = err.stack
-      .split('\n')
-      .filter(c => !c.includes('/error/src/index.mjs'))
-      .join('\n')
+    e = /** @type {CustomError} */ (new Error(err))
   }
 
   if (!is.string(name)) {
     name = 'Unknown'
   }
 
-  err.code = name
-  err.name = name
-  err.type = type
-  err.msg = err.message
+  e.code = name
+  e.name = name
+  e.type = type
+  e.msg = e.message
 
-  if (!err.code.startsWith(type)) {
-    err.code = `${type}_${err.code}`.toUpperCase().replace(/ /g, '_')
+  if (!e.code.startsWith(type)) {
+    e.code = `${type}_${e.code}`.toUpperCase().replace(/ /g, '_')
   }
 
-  if (err.name === 'Error') {
-    err.code = 'E_UNKNOWN'
+  if (e.name === 'Error') {
+    e.code = 'E_UNKNOWN'
   }
 
-  const nameRegExp = new RegExp(`${err.name}:? `, 'g')
-  const msgRegExp = new RegExp(`${err.message}:? `, 'g')
+  const nameRegExp = new RegExp(`${e.name}:? `, 'g')
+  const msgRegExp = new RegExp(`${e.message}:? `, 'g')
 
   // clean stack
-  // remove name and message
-  err.stack = err.stack
-    .replace(nameRegExp, '')
-    .replace(msgRegExp, '')
-    .replace('Error:', '')
-    .split('\n')
-    .map(t => t.trim())
-    .join('\n')
+  if (e.stack) {
+    e.stack = e.stack
+      .split('\n')
+      .filter(c => !c.includes('/error/src/index.mjs'))
+      .join('\n')
+      .replace(nameRegExp, '')
+      .replace(msgRegExp, '')
+      .replace('Error:', '')
+      .split('\n')
+      .map(t => t.trim())
+      .join('\n')
+  }
 
-  return err
+  return e
 }
 
 export default error
