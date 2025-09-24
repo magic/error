@@ -165,6 +165,10 @@ update dependencies
 
 - export types from types dir...
 
-##### 0.0.20 - unreleased
+##### 0.0.20
+
+- pkg: add types dir to files array
+
+##### 0.0.21 - unreleased
 
 ...
