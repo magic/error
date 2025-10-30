@@ -169,6 +169,10 @@ update dependencies
 
 - pkg: add types dir to files array
 
-##### 0.0.21 - unreleased
+##### 0.0.21
+
+- update dependencies
+
+##### 0.0.22 - unreleased
 
 ...
