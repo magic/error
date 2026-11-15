@@ -2,7 +2,7 @@ export const View = state => [
   h1(state.title),
   p(state.description),
 
-  GitBadges('magic/log'),
+  GitBadges('@magic/error'),
 
   h2({ id: 'getting-started' }, 'getting started'),
   p('be in a nodejs project.'),
@@ -11,7 +11,7 @@ export const View = state => [
   Pre('npm i --save @magic/error'),
 
   h3({ id: 'import' }, 'import'),
-  Pre("import log from '@magic/log'"),
+  Pre("import error from '@magic/error'"),
 
   h2({ id: 'usage' }, 'usage'),
   Pre(`
@@ -65,7 +65,7 @@ err = error('message', 'name', 'D')
   h2({ id: 'source' }, 'source'),
   p([
     'the source for this page is in the ',
-    Link({ to: 'https://github.com/magic/log/tree/master/example' }, 'example directory'),
+    Link({ to: 'https://github.com/magic/error/tree/master/example' }, 'example directory'),
     ' and gets built and published to github using ',
     Link({ to: 'https://github.com/magic/core' }, '@magic/core'),
   ]),
