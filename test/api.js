@@ -2,8 +2,6 @@ import { fs, tryCatch } from '@magic/test'
 
 import error from '../src/index.js'
 
-const testError = new Error('message')
-
 const namedErrNative = new Error('msg')
 namedErrNative.name = 'error name'
 
@@ -16,6 +14,7 @@ namedErrStackedNative.stack = namedErrStackedNative.stack.replace(/:/g, '')
 const namedErrorStacked = error(namedErrStackedNative)
 
 const noNameErrorNative = new Error('msg')
+// @ts-expect-error test not-a-string behaviour
 noNameErrorNative.name = 23
 
 const noNameError = error(noNameErrorNative)
@@ -136,12 +135,14 @@ export default [
   },
 
   {
+    // @ts-expect-error testing not-a-string behaviour for name
     fn: error('msg', 23).name,
     expect: 'Unknown',
     info: 'err.name: gets set to Unknown if name (2nd fn arg) is not a string',
   },
 
   {
+    // @ts-expect-error testing not-a-string behaviour for name
     fn: error('msg', 23).code,
     expect: 'E_UNKNOWN',
     info: 'err.code: gets set to E_UNKNOWN if name (2nd fn arg) is not a string',
