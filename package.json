@@ -38,7 +38,11 @@
     "prod": "NODE_ENV=production magic build serve",
     "clean": "magic clean",
     "serve": "magic serve",
-    "dev": "magic dev"
+    "dev": "magic dev",
+    "tsc": "tsc --noEmit",
+    "tsc:test": "tsc --noEmit -p tsconfig.test.json",
+    "lint": "lint",
+    "check": "npm run tsc && npm run tsc:test && npm run lint"
   },
   "dependencies": {
     "@magic/types": "0.1.41"
@@ -51,6 +55,7 @@
     "@magic-themes/docs": "0.0.15",
     "@magic/core": "0.0.161",
     "@magic/format": "0.0.79",
+    "@magic/lint": "0.0.5",
     "@magic/test": "0.3.55",
     "@types/node": "26.6.6",
     "typescript": "7.0.2"
