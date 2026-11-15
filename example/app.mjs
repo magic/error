@@ -1,7 +1,7 @@
 export const state = {
-  title: '@magic/log',
-  description: 'nodejs console.log with environment aware loglevels.',
-  logotext: '@magic/log',
+  title: '@magic/error',
+  description: 'error helpers, adding code and name for errors.',
+  logotext: '@magic/error',
   menu: [
     { to: '/#getting-started', text: 'getting started' },
     { to: '/#install', text: 'install' },
