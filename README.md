@@ -173,6 +173,11 @@ update dependencies
 
 - update dependencies
 
-##### 0.0.25 - unreleased
+##### 0.0.25
+
+- add npm run tsc, tsc:test, lint and check tasks
+- update dependencies
+
+##### 0.0.26 - unreleased
 
 ...
