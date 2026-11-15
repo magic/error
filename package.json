@@ -1,14 +1,31 @@
 {
   "name": "@magic/error",
   "version": "0.0.24",
-  "author": "Wizards & Witches",
   "description": "errors for @magic",
-  "license": "AGPL-3.0",
   "homepage": "https://magic.github.io/error",
-  "main": "src/index.js",
-  "types": "types/index.d.ts",
-  "module": "src/index.js",
+  "bugs": {
+    "url": "https://github.com/magic/error/issues"
+  },
+  "license": "AGPL-3.0",
+  "author": "Wizards & Witches",
+  "contributors": [
+    {
+      "name": "jascha ehrenreich",
+      "github": "jaeh"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/magic/error.git"
+  },
+  "files": [
+    "src",
+    "types"
+  ],
   "type": "module",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "types": "types/index.d.ts",
   "scripts": {
     "start": "t -p",
     "test": "t --exclude docs example config.js",
@@ -22,17 +39,6 @@
     "clean": "magic clean",
     "serve": "magic serve",
     "dev": "magic dev"
-  },
-  "engine": {
-    "node": ">=14.15.4"
-  },
-  "engineStrict": true,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/magic/error.git"
-  },
-  "bugs": {
-    "url": "https://github.com/magic/error/issues"
   },
   "dependencies": {
     "@magic/types": "0.1.41"
@@ -49,17 +55,11 @@
     "@types/node": "26.6.6",
     "typescript": "7.0.2"
   },
-  "files": [
-    "src",
-    "types"
-  ],
-  "contributors": [
-    {
-      "name": "jascha ehrenreich",
-      "github": "jaeh"
-    }
-  ],
+  "engineStrict": true,
   "allowScripts": {
     "@swc/core@1.15.47": true
+  },
+  "engine": {
+    "node": ">=14.15.4"
   }
 }
